@@ -54,6 +54,10 @@ function App() {
         movieFormColor={movieFormColor}
         submitMovie={submitMovie} />
 
+      <MovieList 
+        filteredMovies={filteredMovies}
+        handleDeleteMovie={handleDeleteMovie} 
+      />
     </div>
   );
 }
