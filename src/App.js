@@ -36,13 +36,20 @@ function App() {
 
   return (
     <div className="App">
-      <div className='movie'>
-
+      <div className='movie-area'>
+        <Movie movie={{
+          title: movieTitle,
+          director: movieFormDirector,
+          year: movieFormYearReleased,
+          color: movieFormColor
+        }} />
       </div>
       <MovieForm setMovieTitle={setMovieTitle}
-        movieTitle={setMovieTitle}
-        movieFormYearReleased={setMovieFormYearReleased}
-        movieFormDirect={movieFormDirector}
+        movieTitle={movieTitle}
+        setMovieFormYearReleased={setMovieFormYearReleased}
+        movieFormYearReleased={movieFormYearReleased}
+        setMovieFormDirector={setMovieFormDirector}
+        movieFormDirector={movieFormDirector}
         setMovieFormColor={setMovieFormColor}
         movieFormColor={movieFormColor}
         submitMovie={submitMovie} />
