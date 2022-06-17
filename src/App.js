@@ -27,7 +27,6 @@ function App() {
       color: 'violet'
     }
   ]);
-  console.log(allMovies);
 
   const [filteredMovies, setFilteredMovies] = useState(allMovies);
   const [movieFormYearReleased, setMovieFormYearReleased] = useState('');
@@ -70,8 +69,9 @@ function App() {
   }
 
   useEffect(() => {
-
-  });
+    setFilteredMovies(allMovies);
+    setFilterMovie('');
+  }, [allMovies]);
 
   return (
     <div className="App">
@@ -84,7 +84,7 @@ function App() {
         }} />
       </div>
       <div className='movie-filter'>
-        Filter Movies by Name
+        Filter Movies by Name (case sensitive)
         <input value={filterMovie} onChange={(e) => handleFilterMovies(e.target.value)} />
       </div>
       <MovieForm setMovieTitle={setMovieTitle}
