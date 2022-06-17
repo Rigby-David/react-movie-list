@@ -6,13 +6,35 @@ import Movie from './Movie';
 
 function App() {
 
-  const [allMovies, setAllMovies] = useState([]);
+
+  const [allMovies, setAllMovies] = useState([
+    {
+      title: 'A Knight\'s Tale',
+      director: 'Brian Helgeland',
+      year: '2001',
+      color: 'red'
+    },
+    {
+      title: 'The Northman',
+      director: 'Robert Eggers',
+      year: '2022',
+      color: 'blue'
+    },
+    {
+      title: 'The Black Phone',
+      director: 'Scott Derrickson',
+      year: '2022',
+      color: 'violet'
+    }
+  ]);
+  console.log(allMovies);
+
   const [filteredMovies, setFilteredMovies] = useState(allMovies);
   const [movieFormYearReleased, setMovieFormYearReleased] = useState('');
   const [movieFormDirector, setMovieFormDirector] = useState('');
   const [movieTitle, setMovieTitle] = useState('');
   const [movieFormColor, setMovieFormColor] = useState('');
-  const [filterString, setFilterString] = useState('');
+  const [filterMovie, setFilterMovie] = useState('');
 
   function handleDeleteMovie(title) {
     const index = allMovies.findIndex(movie => movie.title === title);
@@ -22,8 +44,11 @@ function App() {
     setAllMovies([...allMovies]);
   }
 
-  function handleFilterMovies() {
+  function handleFilterMovies(filterMovie) {
+    setFilterMovie(filterMovie);
 
+    const updatedMovies = allMovies.filter(newMovie => newMovie.title.includes(filterMovie));
+    setFilteredMovies(updatedMovies);
   }
 
   function submitMovie(e) {
@@ -57,6 +82,10 @@ function App() {
           year: movieFormYearReleased,
           color: movieFormColor
         }} />
+      </div>
+      <div className='movie-filter'>
+        Filter Movies by Name
+        <input value={filterMovie} onChange={(e) => handleFilterMovies(e.target.value)} />
       </div>
       <MovieForm setMovieTitle={setMovieTitle}
         movieTitle={movieTitle}
