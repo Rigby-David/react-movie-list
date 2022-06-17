@@ -26,8 +26,22 @@ function App() {
 
   }
 
-  function submitMovie() {
+  function submitMovie(e) {
+    e.preventDefault();
 
+    const newMovie = {
+      title: movieTitle,
+      director: movieFormDirector,
+      year: movieFormYearReleased,
+      color: movieFormColor,
+    };
+
+    setAllMovies([...allMovies, newMovie]);
+
+    setMovieTitle('');
+    setMovieFormDirector('');
+    setMovieFormYearReleased('');
+    setMovieFormColor('');
   }
 
   useEffect(() => {

@@ -32,7 +32,7 @@ export default function MovieForm({
             <option value="pink">Pink</option>
           </select>
         </label>
-        <button>Add Movie</button>
+        <button>Submit</button>
       </form>
     </div>
   );
